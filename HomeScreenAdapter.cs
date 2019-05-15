@@ -51,7 +51,6 @@ namespace CustomRowView
             {
                 holder = new MyViewHolder();
 
-                //Fragment
                 //LayoutInflater inflater = (LayoutInflater)context.GetSystemService(Context.LayoutInflaterService);
                 //view = inflater.Inflate(Resource.Layout.CustomView, null);
                 view = context.LayoutInflater.Inflate(Resource.Layout.CustomView, null);
