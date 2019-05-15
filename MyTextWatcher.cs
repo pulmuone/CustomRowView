@@ -29,9 +29,8 @@ namespace CustomRowView
         {
             if (s != null && !"".Equals(s.ToString()))
             {
-                int position = (int)myViewHolder.rowNum;
+                int position = myViewHolder.rowNum;
                 items[position].OrderQty = s.ToString();
-
             }
         }
 

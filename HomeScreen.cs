@@ -66,7 +66,7 @@ namespace CustomRowView {
 
             for (int i = 0; i < tableItems.Count; i++)
             {
-                Log.Debug("Result :", tableItems[i].OrderQty);
+                Log.Debug("Result :", string.Format("{0}, {1}", tableItems[i].BarcodeLabel, tableItems[i].OrderQty));
             }
 
 
