@@ -38,7 +38,10 @@ namespace CustomRowView
         {
             var item = items[position];
 
+            MyViewHolder holder;
+
             View view = convertView;
+
             Button buttonPlus;
             Button buttonMinu;
             EditText editTextOrderQty;
@@ -46,12 +49,12 @@ namespace CustomRowView
 
             if (view == null) // no view to re-use, create new
             {
-                view = context.LayoutInflater.Inflate(Resource.Layout.CustomView, null);
+                holder = new MyViewHolder();
 
-                view.FindViewById<TextView>(Resource.Id.BarcodeLabel).Text = item.BarcodeLabel;
-                view.FindViewById<TextView>(Resource.Id.ProdName).Text = item.ProdName;
-                view.FindViewById<EditText>(Resource.Id.OrderQty).Text = item.OrderQty;
+                LayoutInflater inflater = (LayoutInflater)context.GetSystemService(Context.LayoutInflaterService);
+                view = inflater.Inflate(Resource.Layout.CustomView, null);
 
+                //이 상태가 안전함.
                 editTextOrderQty = view.FindViewById<EditText>(Resource.Id.OrderQty);
 
                 buttonPlus = view.FindViewById<Button>(Resource.Id.buttonPlus);
@@ -60,20 +63,73 @@ namespace CustomRowView
                     editTextOrderQty.Text = (Convert.ToInt32(editTextOrderQty.Text.Trim()) + 1).ToString();
                 };
 
-
                 buttonMinu = view.FindViewById<Button>(Resource.Id.buttonMinus);
                 buttonMinu.Click += (object sender, EventArgs e) =>
                 {
                     editTextOrderQty.Text = (Convert.ToInt32(editTextOrderQty.Text.Trim()) - 1) <= 0 ? "0" : (Convert.ToInt32(editTextOrderQty.Text.Trim()) - 1).ToString();
                 };
 
-                editTextOrderQty.TextChanged += (object sender, Android.Text.TextChangedEventArgs e) =>
-                {
-                    Console.WriteLine(e.Text);
-                    item.OrderQty = e.Text.ToString();
-                };
+                //editTextOrderQty.TextChanged += (object sender, Android.Text.TextChangedEventArgs e) =>
+                //{
+                //    Console.WriteLine(e.Text);
+                //    item.OrderQty = e.Text.ToString();
+                //};
 
+
+                holder.BarcodeLabel = view.FindViewById<TextView>(Resource.Id.BarcodeLabel);
+                holder.ProdName = view.FindViewById<TextView>(Resource.Id.ProdName);
+                holder.OrderQty = view.FindViewById<EditText>(Resource.Id.OrderQty);
+                holder.ButtonPlus = view.FindViewById<Button>(Resource.Id.buttonPlus);
+                holder.ButtonMinus= view.FindViewById<Button>(Resource.Id.buttonMinus);
+
+                holder.OrderQty.Tag = position;
+                view.Tag = holder;
             }
+            else
+            {
+                holder = view.Tag as MyViewHolder;
+                //holder.rowNum= position;
+                //holder.ProdName.Tag = position;
+                holder.OrderQty.Tag = position;
+                //holder.ButtonPlus.Tag = position;
+                //holder.ButtonMinus.Tag = position;
+            }
+
+            //view.FindViewById<TextView>(Resource.Id.BarcodeLabel).Text = item.BarcodeLabel;
+            //view.FindViewById<TextView>(Resource.Id.ProdName).Text = item.ProdName;
+            //view.FindViewById<EditText>(Resource.Id.OrderQty).Text = item.OrderQty;
+
+
+            holder.rowNum = position;
+            holder.BarcodeLabel.Text = item.BarcodeLabel;
+            holder.ProdName.Text = item.ProdName;
+            holder.OrderQty.Text = item.OrderQty;
+
+            //holder.ButtonPlus.Click += (object sender, EventArgs e) =>
+            //{
+            //    holder.OrderQty.Text = (Convert.ToInt32(holder.OrderQty.Text.Trim()) + 1).ToString();
+            //};
+
+            //holder.ButtonMinus.Click += (object sender, EventArgs e) =>
+            //{
+            //    holder.OrderQty.Text = (Convert.ToInt32(holder.OrderQty.Text.Trim()) - 1).ToString();
+            //};
+
+            MyTextWatcher watcher = new MyTextWatcher(holder, items);
+            holder.OrderQty.AddTextChangedListener(watcher);
+
+
+
+            //holder.BarcodeLabel.TextChanged += (object sender, Android.Text.TextChangedEventArgs e) =>
+            //{
+            //    items[holder.rowNum].BarcodeLabel = e.Text.ToString();
+            //};
+
+            //holder.ProdName.TextChanged += (object sender, Android.Text.TextChangedEventArgs e) =>
+            //{
+            //    items[holder.rowNum].ProdName = e.Text.ToString();
+            //};
+
 
             return view;
         }

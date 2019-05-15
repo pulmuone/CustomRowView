@@ -27,7 +27,6 @@
 		android:inputType="numberDecimal"
 		android:id="@+id/OrderQty" 
 		android:textSize="14sp" 
-		android:gravity="center"
 		android:layout_width="40dp" 
 		android:layout_row="0"
 		android:layout_column="2"

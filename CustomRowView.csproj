@@ -54,6 +54,8 @@
   <ItemGroup>
     <Compile Include="HomeScreen.cs" />
     <Compile Include="HomeScreenAdapter.cs" />
+    <Compile Include="MyTextWatcher.cs" />
+    <Compile Include="MyViewHolder.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TableItem.cs" />

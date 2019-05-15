@@ -4,3 +4,6 @@ https://gyjmobile.tistory.com/entry/ListView%EC%97%90-EditText%EB%A5%BC-%EB%84%A
 
 holder 사용
 https://coding-factory.tistory.com/46?fbclid=IwAR02UtMUhVvgyn0k18heTNlZLWudB6WCOxSl2gLp3apyREWIV_Ui03JqEvU
+
+
+https://forums.xamarin.com/discussion/152696/how-to-set-increment-counter-in-textwatcher-in-getview-method

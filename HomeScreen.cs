@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using System.Collections.Generic;
 using Java.Interop;
+using Android.Util;
 
 namespace CustomRowView {
     [Activity(Label = "CustomRowView", MainLauncher = true, Icon = "@drawable/icon")]
@@ -34,7 +35,14 @@ namespace CustomRowView {
             tableItems.Add(new TableItem() { BarcodeLabel = "8809123456783", ProdName = "풀무원 두부", OrderQty = "3" });
             tableItems.Add(new TableItem() { BarcodeLabel = "8809123456784", ProdName = "대상 두부", OrderQty = "4" });
             tableItems.Add(new TableItem() { BarcodeLabel = "8809123456785", ProdName = "CJ부두", OrderQty = "5" });
-            //tableItems.Add(new TableItem() { BarcodeLabel = "8809123456786", ProdName = "스타벅스 커피", OrderQty = "6" });
+            tableItems.Add(new TableItem() { BarcodeLabel = "8809123456786", ProdName = "스타벅스 커피", OrderQty = "6" });
+            tableItems.Add(new TableItem() { BarcodeLabel = "8809123456787", ProdName = "사이다", OrderQty = "7" });
+            tableItems.Add(new TableItem() { BarcodeLabel = "8809123456788", ProdName = "풀무원 녹즙", OrderQty = "8" });
+            tableItems.Add(new TableItem() { BarcodeLabel = "8809123456789", ProdName = "아이스크림", OrderQty = "9" });
+            tableItems.Add(new TableItem() { BarcodeLabel = "8809123456790", ProdName = "식초", OrderQty = "10" });
+            tableItems.Add(new TableItem() { BarcodeLabel = "8809123456791", ProdName = "우유", OrderQty = "11" });
+            tableItems.Add(new TableItem() { BarcodeLabel = "8809123456792", ProdName = "바나나", OrderQty = "12" });
+            tableItems.Add(new TableItem() { BarcodeLabel = "8809123456793", ProdName = "사과", OrderQty = "13" });
 
 
             listView.Adapter = new HomeScreenAdapter(this, tableItems);
@@ -47,13 +55,18 @@ namespace CustomRowView {
             View view;
             EditText OrderQty;
 
-            int RowCount = listView.Adapter.Count;
-            for (int i = 0; i < RowCount; i++)
-            {
-                view = listView.GetChildAt(i);
-                OrderQty = view.FindViewById<EditText>(Resource.Id.OrderQty);
+            //int RowCount = listView.Adapter.Count;
+            //for (int i = 0; i < RowCount; i++)
+            //{
+            //    view = listView.GetChildAt(i);
+            //    OrderQty = view.FindViewById<EditText>(Resource.Id.OrderQty);
 
-                Console.WriteLine(i.ToString());
+            //    Console.WriteLine(i.ToString());
+            //}
+
+            for (int i = 0; i < tableItems.Count; i++)
+            {
+                Log.Debug("Result :", tableItems[i].OrderQty);
             }
 
 
