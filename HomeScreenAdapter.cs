@@ -42,9 +42,9 @@ namespace CustomRowView
 
             View view = convertView;
 
-            Button buttonPlus;
-            Button buttonMinu;
-            EditText editTextOrderQty;
+            //Button buttonPlus;
+            //Button buttonMinu;
+            //EditText editTextOrderQty;
             
 
             if (view == null) // no view to re-use, create new
@@ -57,8 +57,8 @@ namespace CustomRowView
 
                 //이 상태가 안전함.
                 //##
-                editTextOrderQty = view.FindViewById<EditText>(Resource.Id.OrderQty);
-                editTextOrderQty.SetSelectAllOnFocus(true); //컬럼 선택할 경우 전체가 선택 된 상태로 됨.
+                //editTextOrderQty = view.FindViewById<EditText>(Resource.Id.OrderQty);
+                //editTextOrderQty.SetSelectAllOnFocus(true); //컬럼 선택할 경우 전체가 선택 된 상태로 됨.
 
                 //editTextOrderQty.FocusChange += (object sender, View.FocusChangeEventArgs e) =>
                 //{
@@ -68,26 +68,41 @@ namespace CustomRowView
                 //    }
                 //};
 
+                //buttonPlus = view.FindViewById<Button>(Resource.Id.buttonPlus);
+                //buttonPlus.Click += (object sender, EventArgs e) =>
+                //{
+                //    editTextOrderQty.Text = (Convert.ToInt32(editTextOrderQty.Text.Trim()) + 1).ToString();
+                //};
 
-                buttonPlus = view.FindViewById<Button>(Resource.Id.buttonPlus);
-                buttonPlus.Click += (object sender, EventArgs e) =>
-                {
-                    editTextOrderQty.Text = (Convert.ToInt32(editTextOrderQty.Text.Trim()) + 1).ToString();
-                };
-
-                buttonMinu = view.FindViewById<Button>(Resource.Id.buttonMinus);
-                buttonMinu.Click += (object sender, EventArgs e) =>
-                {
-                    editTextOrderQty.Text = (Convert.ToInt32(editTextOrderQty.Text.Trim()) - 1) <= 0 ? "0" : (Convert.ToInt32(editTextOrderQty.Text.Trim()) - 1).ToString();
-                };
+                //buttonMinu = view.FindViewById<Button>(Resource.Id.buttonMinus);
+                //buttonMinu.Click += (object sender, EventArgs e) =>
+                //{
+                //    editTextOrderQty.Text = (Convert.ToInt32(editTextOrderQty.Text.Trim()) - 1) <= 0 ? "0" : (Convert.ToInt32(editTextOrderQty.Text.Trim()) - 1).ToString();
+                //};
                 //##
-
 
                 holder.BarcodeLabel = view.FindViewById<TextView>(Resource.Id.BarcodeLabel);
                 holder.ProdName = view.FindViewById<TextView>(Resource.Id.ProdName);
                 holder.OrderQty = view.FindViewById<EditText>(Resource.Id.OrderQty);
-                //holder.ButtonPlus = view.FindViewById<Button>(Resource.Id.buttonPlus);
-                //holder.ButtonMinus= view.FindViewById<Button>(Resource.Id.buttonMinus);
+                holder.OrderQty.SetSelectAllOnFocus(true);
+                //holder.OrderQty.FocusChange += (object sender, View.FocusChangeEventArgs e) =>
+                //{
+                //    if (holder.OrderQty.Length() > 0)
+                //    {
+                //        holder.OrderQty.SetSelection(holder.OrderQty.Length()); //포커스 선택시 텍스트 끝으로 지정됨.
+                //    }
+                //};
+
+                holder.ButtonPlus = view.FindViewById<Button>(Resource.Id.buttonPlus);
+                holder.ButtonPlus.Click += (object sender, EventArgs e) =>
+                {
+                    holder.OrderQty.Text = (Convert.ToInt32(holder.OrderQty.Text.Trim()) + 1).ToString();
+                };
+                holder.ButtonMinus = view.FindViewById<Button>(Resource.Id.buttonMinus);
+                holder.ButtonMinus.Click += (object sender, EventArgs e) =>
+                {
+                    holder.OrderQty.Text = (Convert.ToInt32(holder.OrderQty.Text.Trim()) - 1) <= 0 ? "0" : (Convert.ToInt32(holder.OrderQty.Text.Trim()) - 1).ToString();
+                };
                 holder.rowNum = position;
 
                 view.Tag = holder;
@@ -115,8 +130,6 @@ namespace CustomRowView
             MyTextWatcher watcher = new MyTextWatcher(holder, items);
             holder.OrderQty.AddTextChangedListener(watcher);
 
-
-
             //holder.BarcodeLabel.TextChanged += (object sender, Android.Text.TextChangedEventArgs e) =>
             //{
             //    items[holder.rowNum].BarcodeLabel = e.Text.ToString();
@@ -127,9 +140,7 @@ namespace CustomRowView
             //    items[holder.rowNum].ProdName = e.Text.ToString();
             //};
 
-
             return view;
         }
-
     }
 }

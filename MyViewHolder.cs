@@ -15,8 +15,8 @@ namespace CustomRowView
     public class MyViewHolder : Java.Lang.Object
     {
 
-        //public Button ButtonPlus { get; set; }
-        //public Button ButtonMinus { get; set; }
+        public Button ButtonPlus { get; set; }
+        public Button ButtonMinus { get; set; }
         public TextView BarcodeLabel { get; set; }
         public TextView ProdName { get; set; }
         public EditText OrderQty { get; set; }
