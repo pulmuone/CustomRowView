@@ -18,3 +18,14 @@ https://forums.xamarin.com/discussion/152696/how-to-set-increment-counter-in-tex
 -----------------------
 Xamarin.iOS 공식 샘플
 https://docs.microsoft.com/ko-kr/xamarin/ios/user-interface/controls/tables/
+
+UITextField : 입력
+UITextView : 보기
+https://docs.microsoft.com/ko-kr/xamarin/ios/user-interface/controls/text-input
+
+
+Working With Tables
+https://developer.xamarin.com/samples/monotouch/WorkingWithTables
+
+최종 소스 여기에 있음.
+https://github.com/xamarin/ios-samples/tree/master/WorkingWithTables

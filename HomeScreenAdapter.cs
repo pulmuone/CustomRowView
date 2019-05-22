@@ -58,6 +58,16 @@ namespace CustomRowView
                 //이 상태가 안전함.
                 //##
                 editTextOrderQty = view.FindViewById<EditText>(Resource.Id.OrderQty);
+                editTextOrderQty.SetSelectAllOnFocus(true);
+
+                //editTextOrderQty.FocusChange += (object sender, View.FocusChangeEventArgs e) =>
+                //{
+                //    if (editTextOrderQty.Length() > 0)
+                //    {
+                //        editTextOrderQty.SetSelection(editTextOrderQty.Length());
+                //    }
+                //};
+
 
                 buttonPlus = view.FindViewById<Button>(Resource.Id.buttonPlus);
                 buttonPlus.Click += (object sender, EventArgs e) =>
@@ -120,5 +130,6 @@ namespace CustomRowView
 
             return view;
         }
+
     }
 }
