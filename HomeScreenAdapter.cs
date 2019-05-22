@@ -58,13 +58,13 @@ namespace CustomRowView
                 //이 상태가 안전함.
                 //##
                 editTextOrderQty = view.FindViewById<EditText>(Resource.Id.OrderQty);
-                editTextOrderQty.SetSelectAllOnFocus(true);
+                editTextOrderQty.SetSelectAllOnFocus(true); //컬럼 선택할 경우 전체가 선택 된 상태로 됨.
 
                 //editTextOrderQty.FocusChange += (object sender, View.FocusChangeEventArgs e) =>
                 //{
                 //    if (editTextOrderQty.Length() > 0)
                 //    {
-                //        editTextOrderQty.SetSelection(editTextOrderQty.Length());
+                //        editTextOrderQty.SetSelection(editTextOrderQty.Length()); //포커스 선택시 텍스트 끝으로 지정됨.
                 //    }
                 //};
 
